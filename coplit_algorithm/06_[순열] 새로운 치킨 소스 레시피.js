@@ -32,7 +32,7 @@ function newChickenRecipe(stuffArr, choiceNum,OorX=true) {
   stuffArr.forEach((el,idx,arr)=>{
     let first = el; // 배열의 첫번째 값
     let restArr = stuffArr.filter((ele,index)=> idx !== index) // 처음 값을 제외한 나머지 배열을 담아준다.
-    let recursionF = newChickenRecipe(restArr,choiceNum-1) // 첫번째 요소를 제외한 나머지 배열 , 이미 first로 하나를 골랐기 때문에 choiceNum은 하나 뺴준 값을 다시 재귀
+    let recursionF = newChickenRecipe(restArr,choiceNum-1,OorX) // 첫번째 요소를 제외한 나머지 배열 , 이미 first로 하나를 골랐기 때문에 choiceNum은 하나 뺴준 값을 다시 재귀
     let comArr = recursionF.map(el=>[first, ...el])// 다시 조합하기
     result.push(...comArr)
   })
