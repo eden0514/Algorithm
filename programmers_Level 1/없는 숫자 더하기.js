@@ -5,7 +5,7 @@ function solution(numbers) {
 
 
 /*
-//처음 
+//처음 풀이
 function solution(numbers) {
   //0부터 9 숫자 중 numbers에 없는 숫자를 찾아 해당하는 값을 더한 값을 리턴
     const num = [0,1,2,3,4,5,6,7,8,9];
