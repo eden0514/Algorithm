@@ -1,7 +1,7 @@
 //for문으로 작성했던 부분을 map을 이용해 다시 작성해본 코드
 function solution(arr1, arr2) {
     let result = arr1.map((el,index)=>{
-        return el.map((el,idx)=>el = el+arr2[index][idx])
+        return el.map((el,idx)=> el+arr2[index][idx])
     })
     return result;
     
