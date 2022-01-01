@@ -7,7 +7,7 @@ function solution(d, budget) {
         if(budget - d[i] >= 0){
            budget -= d[i];
             count++; 
-        }
+        }else break;
     }
     return count;
 }
