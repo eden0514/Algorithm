@@ -12,7 +12,7 @@ function solution(s) {
         deleteZero += zeroCount;
       // 이제 남은 s의 길이를 2진법으로 변환할 것이므로 count를 올려주고, 해당 길이를 2진법으로 변환을 시켜준다.
         count++;
-        s = s.length.toString(2)
+        s = s.length.toString(2);
     }
-    return [count,deleteZero]
+    return [count,deleteZero];
 }
