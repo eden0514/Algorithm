@@ -1,18 +1,27 @@
-function solution(numbers) {
-    let arr = [numbers[0]];
-    for (let i = 1; i < numbers.length; i++) {
-      arr.push(numbers[i]);
-      for ( let j = 0 ; j < arr.length-1; j++){
-          let temp = arr.join('');
-          let cp = [...arr];
-          [cp[j],cp[cp.length - 1]] = [cp[cp.length - 1],cp[j]]
-          if (Number(temp) < Number(cp.join(''))){
-              [arr[j],arr[arr.length - 1]] = [arr[arr.length - 1],arr[j]]
-          }
-      }
+function quickSort(numbers){
+    if (numbers.length <= 1) return numbers //배열의 값이 1개가 되는 경우에는 해당 배열만 리턴
+    let pivot = numbers[0]; //기준값
+    let left = []; //기준값보다 큰 값은 왼쪽
+    let right = [];// 기준값보다 작은 값은 오른쪽
+    //배열이 1보다 큰 경우 값 비교
+    for(let i = 1 ; i < numbers.length ;i++){
+        if (String(pivot)+String(numbers[i]) >= String(numbers[i])+String(pivot)){
+            right.push(numbers[i]);
+        }else{
+            left.push(numbers[i]);
+        }
     }
-    return arr.join('');
-  }
+    return [...quickSort(left),pivot,...quickSort(right)]; //왼쪽과 오른쪽 배열들도 정렬이 필요하므로 재귀
 
-//해당 코드의 경우 이중 for문을 돌고 있어 시간 초과 나는 것 같음 quick sort 등 다른 정렬 알고리즘으로 풀어보기!
-//quick sort의 경우 pivot 값을 기준으로 큰 수와 작은 수를 나눠 정력을 하는데, 해당 문제의 경우 기준이 되는 값을 더한 값으로 하고 정렬 돌리기
+}
+
+function solution(numbers) {
+    if (numbers.length <= 1 ) return String(numbers[0]); //배열의 길이가 1인 경우는 해당 값만 리턴
+
+    let result = quickSort(numbers);
+   if (result[0] === 0) { //numbers에 0이 포함될 수 있으므로 예외 처리
+       return '0'
+   }else{
+       return result.join('')
+   }
+  }
