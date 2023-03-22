@@ -1,17 +1,23 @@
 //https://school.programmers.co.kr/learn/courses/30/lessons/42883?language=javascript
 function solution(number, k) {
     let res = [];
-    let arr = number.split('');
-    let len = arr.length - k;
+    let arr = number.split('')
     
-    for(let i = 0; i < len ; i ++){
-        let max = Math.max(...arr);
-        res.push(max)
-        let idx = arr.indexOf(String(max))
-        arr.splice(idx,1)
+    for (let i = 0; i < arr.length;i++){
+        let current = arr[i];
+        while(k > 0 && res[res.length - 1] < current){
+            res.pop()
+            k--
+        }
+        res.push(current)
     }
-    return res.join('')
+    res.splice(res.length - k, k)
+   return res.join('')
 }
-//내가 생각했던 방법은 배열에서 제일 큰 값을 구한 뒤 해당 값을 res값에 채워 넣는 형식이었는데
-//기대값을 보니 들어오는 number가 만약 "1234"라면 해당 숫자들의 순서는 바뀔 수 없는 것. 해당 값 중 2개를 뽑아 가장 큰 수를 만든다고 하면 내가 생각한 방법대로 43이겠지만
-//해당 문제에서 원하는 기대값은 34이다. 그 점을 간과하고 문제에 임했던 것 같다. 다시 생각해보자.
+//우선 로직은 stack으로 사용할 배열 하나르 생성하고
+//number의 숫자들을 순회한다.
+//stack에 아무 값도 없는 경우에는 현재의 값을 추가한다.
+//res의 제일 마지막 값보다 현재 순회하고 있는 숫자가 더 큰 경우 res의 마지막 값을 제거하고 k를 1 감소한다. 왜? 현재 순회하고 있는 값보다 이전에 순회했던 값이 작으므로 해당 숫자는 제거가 된 것이므로
+//그 다음 현재의 값을 추가한다.
+//현재 순회하는 값보다 res 배열의 마지막 값이 크다면 현재 순회하고 있는 값을 res에 추가한다. 우리는 큰 수를 찾는 것이기 때문에
+//아직 이해가 안 가는 부분이 있기는 하다....어렵다.. 위의 부분까지는 이해를 했으나 완벽히 내것이 되기까지 반복 학습하자!
