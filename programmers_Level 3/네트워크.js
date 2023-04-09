@@ -21,3 +21,4 @@ function solution(n, computers) {
     }
     return result;
 }
+//bfs로도 풀어보기!
